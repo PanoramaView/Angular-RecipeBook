@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-md-5">
-    <app-recipe-list
-      (recipeWasSelected)="selectedRecipe = $event"></app-recipe-list>
+    <!-- removed after service injection, no longer need this to pass data
+      <app-recipe-list
+      (recipeWasSelected)="selectedRecipe = $event"></app-recipe-list> -->
+    <app-recipe-list></app-recipe-list>
   </div>
   <div class="col-md-7">
     <app-recipe-detail
