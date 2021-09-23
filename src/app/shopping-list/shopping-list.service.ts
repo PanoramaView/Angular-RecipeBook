@@ -4,22 +4,33 @@ import { Ingredient } from "../shared/ingredient.model";
 export class ShoppingListService {
 
     // inform that new data is available
-    ingredientsChange = new EventEmitter<Ingredient[]>(); 
+    ingredientsChange = new EventEmitter<Ingredient[]>();
     // now this can EventEmitter can emit Ingredient[]
 
     private ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10),
+        new Ingredient('Apples', 5),
+        new Ingredient('Tomatoes', 10),
     ];
 
-    getIngredients(){
+    getIngredients() {
         return this.ingredients.slice(); /* will return a copy of the array Recipe[], can't get access, only a copy*/
 
     }
 
     //when we add ingredients
-    addIngredient(ingredient: Ingredient){
+    addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
         this.ingredientsChange.emit(this.ingredients.slice()); // pass the data to the copy of the original Ingredient array
+    }
+
+    addIngredients(ingredients: Ingredient[]) {
+        this.ingredients.push(...ingredients); //spread operator, turn array into list (of elements)
+        this.ingredientsChange.emit(this.ingredients.slice());
+        /* 
+        ok, same ▲▲▲. But too many events emitted
+        for(let ingredient of ingredients){
+            this.addIngredient(ingredient);
+        }
+        */
     }
 }
