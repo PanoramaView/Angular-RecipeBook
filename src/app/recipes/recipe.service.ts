@@ -33,6 +33,10 @@ export class RecipeService {
         return this.recipes.slice(); /* will return a copy of the array Recipe[], can't get access, only a copy*/
     }
 
+    getRecipe(id: number){
+        return this.recipes[id];
+    }
+
     addIngredientsToShoppingList(ingredients: Ingredient[]){
         this.slService.addIngredients(ingredients); //add the ingredients of the Recipe in the shoppingList.component
     }

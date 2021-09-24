@@ -18,10 +18,6 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 
-const appRoutes: Routes = [
-  {path: ''}
-]
-
 @NgModule({
   declarations: [
     AppComponent,
