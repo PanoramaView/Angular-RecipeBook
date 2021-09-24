@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
@@ -14,7 +15,9 @@ export class RecipeListComponent implements OnInit {
 
 
   /* inject our Service */
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.recipes = this.recipeService.getRecipes();
@@ -24,5 +27,9 @@ export class RecipeListComponent implements OnInit {
     this.recipeWasSelected.emit(recipe);
     removed after service injection
   } */
+
+  onNewRecipe(){
+    this.router.navigate(['new'], {relativeTo: this.route})
+  }
 
 }

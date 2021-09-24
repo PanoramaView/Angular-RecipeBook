@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 // import { AuthGuard } from './auth-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { Recipe } from './recipes/recipe.model';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -12,7 +13,9 @@ const appRoutes: Routes = [
     { path: '', redirectTo: '/recipes', pathMatch: 'full'}, 
     { path: 'recipes', component: RecipesComponent, children:[
         { path: '', component: RecipeStartComponent },
+        { path: 'new', component: RecipeEditComponent },
         { path: ':id', component: RecipeDetailComponent },
+        { path: ':id/edit', component: RecipeEditComponent },
     ]},
     //nesting. note: AuthGuard e AuthService needs to be added to the providers in app.module
     { path: 'shopping-list', component: ShoppingListComponent},
