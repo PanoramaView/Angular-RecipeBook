@@ -1,10 +1,12 @@
 import { EventEmitter } from "@angular/core";
+import { Subject } from "rxjs";
 import { Ingredient } from "../shared/ingredient.model";
 
 export class ShoppingListService {
 
     // inform that new data is available
-    ingredientsChange = new EventEmitter<Ingredient[]>();
+    ingredientsChange = new Subject<Ingredient[]>();
+    //ingredientsChange = new EventEmitter<Ingredient[]>();
     // now this can EventEmitter can emit Ingredient[]
 
     private ingredients: Ingredient[] = [
@@ -20,12 +22,12 @@ export class ShoppingListService {
     //when we add ingredients
     addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
-        this.ingredientsChange.emit(this.ingredients.slice()); // pass the data to the copy of the original Ingredient array
+        this.ingredientsChange.next(this.ingredients.slice()); // pass the data to the copy of the original Ingredient array
     }
 
     addIngredients(ingredients: Ingredient[]) {
         this.ingredients.push(...ingredients); //spread operator, turn array into list (of elements)
-        this.ingredientsChange.emit(this.ingredients.slice());
+        this.ingredientsChange.next(this.ingredients.slice());
         /* 
         ok, same ▲▲▲. But too many events emitted
         for(let ingredient of ingredients){
