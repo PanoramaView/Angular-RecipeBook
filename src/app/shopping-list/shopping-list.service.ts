@@ -8,6 +8,7 @@ export class ShoppingListService {
     ingredientsChange = new Subject<Ingredient[]>();
     //ingredientsChange = new EventEmitter<Ingredient[]>();
     // now this can EventEmitter can emit Ingredient[]
+    startedEditing = new Subject<number>();
 
     private ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
@@ -17,6 +18,10 @@ export class ShoppingListService {
     getIngredients() {
         return this.ingredients.slice(); /* will return a copy of the array Recipe[], can't get access, only a copy*/
 
+    }
+
+    getIngredient(index:number) {
+        return this.ingredients[index];
     }
 
     //when we add ingredients
