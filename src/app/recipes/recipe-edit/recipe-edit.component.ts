@@ -29,6 +29,16 @@ export class RecipeEditComponent implements OnInit {
     console.log(this.recipeForm);
   }
 
+  //on editMode it adds a new inputbox to add ingredients
+  onAddIngredient() {
+    (<FormArray>this.recipeForm.get('ingredients')).push(
+      new FormGroup({
+        'name': new FormControl(),
+        'amount': new FormControl(),
+      })
+    )
+  }
+
   // to initialize our Form
   private initForm() {
     let recipeName = '';
