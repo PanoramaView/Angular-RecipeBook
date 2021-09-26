@@ -2,6 +2,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Ingredient } from 'src/app/shared/ingredient.model';
+import { threadId } from 'worker_threads';
 import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
@@ -48,6 +49,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     } else {
       this.slService.addIngredient(newIngredient);
     }
+    this.editMode = false;
+    form.reset();
 
     //old
     // const ingName = this.nameInputRef.nativeElement.value;
