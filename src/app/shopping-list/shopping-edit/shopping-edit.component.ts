@@ -2,7 +2,6 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import { threadId } from 'worker_threads';
 import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
@@ -59,6 +58,13 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     // // this.ingredientAdded.emit(newIngredient) removed after injection
     // this.slService.addIngredient(newIngredient);
   }
+
+  onClear(){
+    this.slForm.reset();
+    this.editMode = false;
+  }
+
+
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
