@@ -42,6 +42,6 @@ import { RecipeService } from './recipes/recipe.service';
     ReactiveFormsModule
   ],
   providers: [ShoppingListService],
-  bootstrap: [AppComponent, RecipeService]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
