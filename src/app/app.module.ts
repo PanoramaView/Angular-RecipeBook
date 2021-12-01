@@ -41,7 +41,7 @@ import { RecipeService } from './recipes/recipe.service';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService], //now we have one instance of the service while the app is running 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
